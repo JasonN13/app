@@ -1,5 +1,7 @@
 import Link from "next/link"
 import ActiveLink from "./ActiveLink"
+import { HomeIcon } from "@primer/octicons-react"
+
 
 
 export default function Navbar() {
@@ -21,7 +23,10 @@ const navItem=[
 
           <div className="flex space-x-4">
             
-          <Link href="/" className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Home</Link>
+          <Link href="/" className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Home
+          <HomeIcon></HomeIcon>
+          </Link>
+
 
           {
             navItem.map(navItem=>(

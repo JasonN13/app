@@ -1,7 +1,10 @@
+import Formulario from '@/app/Componentes/Formulario'
 import React from 'react'
 
 export default function page() {
   return (
-    <div>  Componente contacto </div>
+    <div>  
+      <Formulario/>
+    </div>
   )
 }

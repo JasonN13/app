@@ -1,37 +1,44 @@
-import React from 'react'
-import { Usuario } from '../Modelos/Iformulario'
+import React from 'react';
+import { Usuario } from '../Modelos/Iformulario';
 
 interface TablaUsuarioProps {
-    usuarios: Usuario[]; // Define el tipo de usuarios como un array de Usuario
+  usuarios: Usuario[];
+  onEdit: (usuario: Usuario) => void;
+  onDelete: (id: string) => void;
 }
 
-const TablaUsuario: React.FC<TablaUsuarioProps> = ({ usuarios }) => {
-    return (
-        <table className="table-auto border-collapse border border-gray-400 w-full mt-5">
-          <thead>
-            <tr>
-              <th className="border border-gray-300">Nombre</th>
-              <th className="border border-gray-300">Apellido</th>
-              <th className="border border-gray-300">Teléfono</th>
-              <th className="border border-gray-300">Correo</th>
-              <th className="border border-gray-300">Fecha de Nacimiento</th>
-              <th className="border border-gray-300">Edad</th>
-            </tr>
-          </thead>
-          <tbody>
-            {usuarios.map((usuario, index) => (
-              <tr key={index}>
-                <td className="border border-gray-300">{usuario.nombre}</td>
-                <td className="border border-gray-300">{usuario.apellido}</td>
-                <td className="border border-gray-300">{usuario.telefono}</td>
-                <td className="border border-gray-300">{usuario.correo}</td>
-                <td className="border border-gray-300">{usuario.fnacimiento}</td>
-                <td className="border border-gray-300">{usuario.edad}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      );
-}
+const TablaUsuario: React.FC<TablaUsuarioProps> = ({ usuarios, onEdit, onDelete }) => {
+  return (
+    <table className="table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Telefono</th>
+          <th>Correo</th>
+          <th>Fecha de Nacimiento</th>
+          <th>Edad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {usuarios.map((usuario) => (
+          <tr key={usuario.id}>
+            <td>{usuario.nombre}</td>
+            <td>{usuario.apellido}</td>
+            <td>{usuario.telefono}</td>
+            <td>{usuario.correo}</td>
+            <td>{usuario.fnacimiento}</td>
+            <td>{usuario.edad}</td>
+            <td>
+              <button onClick={() => onEdit(usuario)} className="btn btn-warning">Editar</button>
+              <button onClick={() => onDelete(usuario.id)} className="btn btn-danger">Eliminar</button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+};
 
-export default TablaUsuario
+export default TablaUsuario;
